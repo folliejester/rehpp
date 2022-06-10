@@ -1,251 +1,566 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Banglore Home Price Prediction</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <style>
-        @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        
+        <title>RXO.me</title>
+        <link rel="icon" href="https://i.imgur.com/JOet6Sk.png" type="image/x-icon">
+        <meta property="og:title" content="RXO.me">
+        <meta property="og:type" content="Mail" />
+        <meta property="og:image" content="https://i.imgur.com/gXugKee.png">
+        <meta property="og:url" content="http://rxo.me">
+        <meta property="og:description" content="Mask your email IDs for privacy and to avoid spams.">
 
-.switch-field {
-	display: flex;
-	margin-bottom: 36px;
-	overflow: hidden;
-}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+        <link href="https://rehpp.pages.dev/css/styles.css" rel="stylesheet" />
 
-.switch-field input {
-	position: absolute !important;
-	clip: rect(0, 0, 0, 0);
-	height: 1px;
-	width: 1px;
-	border: 0;
-	overflow: hidden;
-}
-
-.switch-field label {
-	background-color: #e4e4e4;
-	color: rgba(0, 0, 0, 0.6);
-	font-size: 14px;
-	line-height: 1;
-	text-align: center;
-	padding: 8px 16px;
-	margin-right: -1px;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-	transition: all 0.1s ease-in-out;
-}
-
-.switch-field label:hover {
-	cursor: pointer;
-}
-
-.switch-field input:checked + label {
-	background-color: #a5dc86;
-	box-shadow: none;
-}
-
-.switch-field label:first-of-type {
-	border-radius: 4px 0 0 4px;
-}
-
-.switch-field label:last-of-type {
-	border-radius: 0 4px 4px 0;
-}
-
-.form {
-	max-width: 270px;
-	font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
-	font-weight: normal;
-	line-height: 1.625;
-	margin: 8px auto;
-	padding-left: 16px;
-	z-index: 2;
-}
-
-h2 {
-	font-size: 18px;
-	margin-bottom: 8px;
-}
-.area{
-  font-family: "Roboto", sans-serif;
-  outline: 0;
-  background: #f2f2f2;
-  width: 76%;
-  border: 0;
-  margin: 0 0 10px;
-  padding: 10px;
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+        <style>
+        
+          /* 64ac15 */
+*,
+*:before,
+*:after {
   box-sizing: border-box;
+}
+h4 {
+  color: #f0a500;
+}
+body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
-  height: 35px;
-  border-radius: 5px;
+  color: #b9b9b9;
+  background-color: #e3e3e3;
 }
-
-.location{
-  font-family: "Roboto", sans-serif;
-  outline: 0;
-  background: #f2f2f2;
-  width: 76%;
-  border: 0;
-  margin: 0 0 10px;
-  padding: 10px;
-  box-sizing: border-box;
-  font-size: 15px;
-  height: 40px;
-  border-radius: 5px;
-}
-
-.submit{
-  background: #a5dc86;
-  width: 76%;
-  border: 0;
-  margin: 25px 0 10px;
-  box-sizing: border-box;
-  font-size: 15px;
-	height: 35px;
-	text-align: center;
-	border-radius: 5px;
-}
-
-.result{
-		background: #dcd686;
-		width: 76%;
-		border: 0;
-		margin: 25px 0 10px;
-		box-sizing: border-box;
-		font-size: 15px;
-		height: 35px;
-		text-align: center;
-}
-
-.img {
-  background: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-	background-repeat: no-repeat;
-  background-size: auto;
-  background-size:100% 100%;
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(15px);
-  position: fixed;
+input,
+input[type="radio"] + label,
+input[type="checkbox"] + label:before,
+select option,
+select {
   width: 100%;
-  height: 100%;
+  padding: 1em;
+  line-height: 1.4;
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+input:focus {
+  outline: 0;
+  border-color: #bd8200;
+}
+input:focus + .input-icon i {
+  color: #f0a500;
+}
+input:focus + .input-icon:after {
+  border-right-color: #f0a500;
+}
+input[type="radio"] {
+  display: none;
+}
+input[type="radio"] + label,
+select {
+  display: inline-block;
+  width: 20%;
+  text-align: center;
+  float: left;
+  border-radius: 0;
+}
+input[type="radio"] + label:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+input[type="radio"] + label:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+input[type="radio"] + label i {
+  padding-right: 0.4em;
+}
+input[type="radio"]:checked + label,
+input:checked + label:before,
+select:focus,
+select:active {
+  background-color: #f0a500;
+  color: #fff;
+  border-color: #bd8200;
+}
+input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"] + label {
+  position: relative;
+  display: block;
+  padding-left: 1.6em;
+}
+input[type="checkbox"] + label:before {
+  position: absolute;
+  top: 0.2em;
+  left: 0;
+  display: block;
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  content: "";
+}
+input[type="checkbox"] + label:after {
+  position: absolute;
+  top: 0.45em;
+  left: 0.2em;
+  font-size: 0.8em;
+  color: #fff;
+  opacity: 0;
+  font-family: FontAwesome;
+  content: "\f00c";
+}
+input:checked + label:after {
+  opacity: 1;
+}
+select {
+  height: 3.4em;
+  width: 480px;
+  line-height: 2;
+}
+select:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+select:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+select:focus,
+select:active {
+  outline: 0;
+}
+select option {
+  background-color: #f0a500;
+  color: #fff;
+}
+.input-group {
+  margin-bottom: 1em;
+  zoom: 1;
+}
+.input-group:before,
+.input-group:after {
+  content: "";
+  display: table;
+}
+.input-group:after {
+  clear: both;
+}
+.input-group-icon {
+  position: relative;
+}
+.input-group-icon input {
+  padding-left: 4.4em;
+}
+.input-group-icon .input-icon {
+  position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  width: 3.4em;
+  height: 3.4em;
+  line-height: 3.4em;
+  text-align: center;
+  pointer-events: none;
+}
+.input-group-icon .input-icon:after {
+  position: absolute;
+  top: 0.6em;
+  bottom: 0.6em;
+  left: 3.4em;
+  display: block;
+  border-right: 1px solid #e5e5e5;
+  content: "";
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+.input-group-icon .input-icon i {
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+.contained {
+  max-width: 38em;
+  padding: 1em 3em 2em 3em;
+  margin: 0em auto;
+  background-color: #fff;
+  border-radius: 4.2px;
+  box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
 }
 
-body, html {
-  height: 100%;
-}
-    </style>
-</head>
-<body>
-<div class="img"></div>
-<form class="form">
-	<h2>Area (Square Feet)</h2>
-    <input class="area"  type="text" id="uiSqft" class="floatLabel" name="Squareft" value="1000">
-	<h2>BHK</h2>
-	<div class="switch-field">
-		<input type="radio" id="radio-bhk-1" name="uiBHK" value="1"/>
-		<label for="radio-bhk-1">1</label>
-		<input type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked/>
-		<label for="radio-bhk-2">2</label>
-		<input type="radio" id="radio-bhk-3" name="uiBHK" value="3"/>
-		<label for="radio-bhk-3">3</label>
-		<input type="radio" id="radio-bhk-4" name="uiBHK" value="4"/>
-		<label for="radio-bhk-4">4</label>
-		<input type="radio" id="radio-bhk-5" name="uiBHK" value="5"/>
-		<label for="radio-bhk-5">5</label>
-	</div>
-	</form>
-<form class="form">
-	<h2>Bath</h2>
-	<div class="switch-field">
-		<input type="radio" id="radio-bath-1" name="uiBathrooms" value="1"/>
-		<label for="radio-bath-1">1</label>
-		<input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked/>
-		<label for="radio-bath-2">2</label>
-		<input type="radio" id="radio-bath-3" name="uiBathrooms" value="3"/>
-		<label for="radio-bath-3">3</label>
-		<input type="radio" id="radio-bath-4" name="uiBathrooms" value="4"/>
-		<label for="radio-bath-4">4</label>
-		<input type="radio" id="radio-bath-5" name="uiBathrooms" value="5"/>
-		<label for="radio-bath-5">5</label>
-	</div>
-		<h2>Location</h2>
-	<div>
-  <select class="location" name="" id="uiLocations">
-    <option value="" disabled="disabled" selected="selected">Choose a Location</option>
-		<option>Electronic City</option>
-        <option>Rajaji Nagar</option>
-  </select>
-</div>
-	<button class="submit" onclick="onClickedEstimatePrice()" type="button">Estimate Price</button>
-	<div id="uiEstimatedPrice" class="result">	<h2></h2> </div>
-</body>
-<script>
-    function getBathValue() {
-  var uiBathrooms = document.getElementsByName("uiBathrooms");
-  for(var i in uiBathrooms) {
-    if(uiBathrooms[i].checked) {
-        return parseInt(i)+1;
-    }
+
+
+
+
+        
+          /* only animate if the device supports hover */
+@media (hover: hover) {
+  #creditcard {
+    /*  set start position */
+    transform: translateY(110px);
+    transition: transform 0.1s ease-in-out;
+    /*  set transition for mouse enter & exit */
   }
-  return -1; // Invalid Value
-}
 
-function getBHKValue() {
-  var uiBHK = document.getElementsByName("uiBHK");
-  for(var i in uiBHK) {
-    if(uiBHK[i].checked) {
-        return parseInt(i)+1;
-    }
+  #money {
+    /*  set start position */
+    transform: translateY(180px);
+    transition: transform 0.1s ease-in-out;
+    /*  set transition for mouse enter & exit */
   }
-  return -1; // Invalid Value
+
+  button:hover #creditcard {
+    transform: translateY(0px);
+    transition: transform 0.2s ease-in-out;
+    /*  overide transition for mouse enter */
+  }
+
+  button:hover #money {
+    transform: translateY(0px);
+    transition: transform 0.3s ease-in-out;
+    /*  overide transition for mouse enter */
+  }
 }
 
-function onClickedEstimatePrice() {
-  console.log("Estimate price button clicked");
-  var sqft = document.getElementById("uiSqft");
-  var bhk = getBHKValue();
-  var bathrooms = getBathValue();
-  var location = document.getElementById("uiLocations");
-  var estPrice = document.getElementById("uiEstimatedPrice");
-
-  var url = "http://54.187.46.79:5000/predict_home_price"; //Use this if you are NOT using nginx which is first 7 tutorials
-//   var url = "/api/predict_home_price"; // Use this if  you are using nginx. i.e tutorial 8 and onwards
-
-  $.post(url, {
-      total_sqft: parseFloat(sqft.value),
-      bhk: bhk,
-      bath: bathrooms,
-      location: location.value
-  },function(data, status) {
-      console.log(data.estimated_price);
-      estPrice.innerHTML = "<h2>" + data.estimated_price.toString() + " Lakh</h2>";
-      console.log(status);
-  });
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.25rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
-function onPageLoad() {
-  console.log( "document loaded" );
-  var url = "http://54.187.46.79:5000/get_location_names"; // Use this if you are NOT using nginx which is first 7 tutorials
-//   var url = "/api/get_location_names"; // Use this if  you are using nginx. i.e tutorial 8 and onwards
-  $.get(url,function(data, status) {
-      console.log("got response for get_location_names request");
-      if(data) {
-          var locations = data.locations;
-          var uiLocations = document.getElementById("uiLocations");
-          $('#uiLocations').empty();
-          for(var i in locations) {
-              var opt = new Option(locations[i]);
-              $('#uiLocations').append(opt);
-          }
-      }
-  });
+.button:hover .button__text span {
+  transform: translateY(-0.25rem);
+  transition: transform .2s ease-in-out;
 }
 
-window.onload = onPageLoad;
+/* styling */
 
-</script>
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+
+
+.button {
+  border: none;
+  outline: none;
+  background-color: purple;
+  padding: 1rem 90px 1rem 2rem;
+  position: relative;
+  border-radius: 8px;
+  letter-spacing: 0.7px;
+  background-color: #5086bd;
+  color: #fff;
+  font-size: 21px;
+  font-family: "Lato", sans-serif;
+  cursor: pointer;
+  box-shadow: rgba(0, 9, 61, 0.2) 0px 4px 8px 0px;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button__svg {
+  position: absolute;
+  overflow: visible;
+  bottom: 6px;
+  right: 0.2rem;
+  height: 140%;
+}
+
+            @import url('https://rxo.me/inter.css');
+        .card {
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+          height: 200px;
+          overflow: hidden;
+          padding: 20px;
+          position: relative;
+          width: 100%;
+        }
+        .title {
+          font-size: 1.5em;
+          height: 29px;
+          margin-bottom: 0;
+        }
+        .text {
+          color: #667;
+          font-size: 1em;
+          height: 38px;
+          margin: 5px 0 0;
+        }
+        .line {
+          left: 0;
+          position: absolute;
+          width: 100%;
+        }
+        .line path {
+          fill: none;
+          stroke: black;
+          stroke-width: 2;
+          stroke-dasharray: 300 1903;
+        }
+        .card.saving .line path {
+          stroke-dashoffset: -472;
+          stroke-dasharray: 153 1903;
+          transition: stroke-dasharray 500ms, stroke-dashoffset 500ms;
+        }
+        .card.done .line path {
+          stroke-dashoffset: -762;
+          stroke-dasharray: 1095 1903;
+          transition: stroke-dasharray 1500ms, stroke-dashoffset 1500ms;
+        }
+        .line2 {
+          height: 52px;
+          left: 230px;
+          opacity: 0;
+          position: absolute;
+          stroke-dasharray: 6 48;
+          stroke-dashoffset: -42;
+          top: 100px;
+          transform-origin: 50%;
+          width: 50px;
+        }
+        
+        .card.saving .line2 {
+          animation: 4s 500ms Rotate forwards;
+        }
+        .card.done .line2 {
+          animation: 500ms ScaleDown forwards;
+        }
+        .form {
+          transform-origin: 0 50%;
+          transition: transform 500ms, opacity 500ms;
+        }
+        .card.saving .form {
+          transform: translateY(-16px) scale(.8);
+        }
+        .card.done .form {
+          transform: translateY(-16px) scale(.8);
+          opacity: 0;
+        }
+        .input {
+          background: transparent;
+          border: 0;
+          box-sizing: border-box;
+          font-size: 20px;
+          height: 100px;
+          margin-top: 20px;
+          outline: none !important;
+          position: relative;
+          width: 100%;
+          text-align: center;
+        }
+        @media (max-width: 1000px) {
+          .input {
+  background: transparent;
+  border: 0;
+  box-sizing: border-box;
+  font-size: 20px;
+  height: 60px;
+  margin-top: 20px;
+  outline: none !important;
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+@media only screen and (max-width: 540px) {
+  .col-half {
+    width: 100%;
+    padding-right: 0;
+  }
+}
+
+
+ 
+    
+}
+        @keyframes Rotate {
+          0% { transform: rotate(0); opacity: 1; }
+          25% { transform: rotate(360deg); opacity: 1; }
+          50% { transform: rotate(720deg); opacity: 1; }
+          75% { transform: rotate(1080deg); opacity: 1; stroke-dasharray: 6 48; stroke-dashoffset: -42;}
+          100% { transform: rotate(1080deg); opacity: 1; stroke-dashoffset: 0; stroke-dasharray: 36 48;}
+        }
+        @keyframes ScaleDown {
+          0% { transform: scale(1); }
+          100% { transform: scale(0);}
+        }
+        
+        </style>
+        
+    </head>
+    <body id="page-top">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand">rehpp.pages.dev</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="https://twitter.com/rxo_me">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://rehpp.pages.dev/contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 h-100">
+                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-8 align-self-end">
+                        <h1 class="text-white font-weight-bold">Real Estate House<br>Price Predictor</h1>
+                        <hr class="divider" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <p class="text-white-75 mb-5">Predict price of real estate in Bangalore!</p>
+                        <button type="button" class="btn btn-primary btn-xl" data-bs-toggle="modal" data-bs-target="#subscribemodal">Predict Now</button>
+                        
+                        <!-- Modal -->
+<div class="modal fade" id="subscribemodal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        
+        <div class="contained">
+          <form>
+            <div class="row">
+              <h4>Area (in Square Feet)</h4>
+              <div class="input-group input-group-icon">
+                <input type="number"/>
+                <span><div class="input-icon"><i class="bi bi-house-door"></i></div></span>
+              </div>
+            </div>
+      
+            <div class="row">
+      
+              <h4>BHK</h4>
+              <div class="input-group">
+                <input id="bhk1" type="radio" name="bhk" value="1"/>
+                <label for="bhk1"><span>1</span></label>
+                <input id="bhk2" type="radio" name="bhk" value="2"/>
+                <label for="bhk2"> <span>2</span></label>
+                <input id="bhk3" type="radio" name="bhk" value="3"/>
+                <label for="bhk3"> <span>3</span></label>
+                <input id="bhk4" type="radio" name="bhk" value="4"/>
+                <label for="bhk4"> <span>4</span></label>
+                <input id="bhk5" type="radio" name="bhk" value="5"/>
+                <label for="bhk5"> <span>5</span></label>
+              </div>
+      
+              <h4>Bath</h4>
+              <div class="input-group">
+                <input id="bath1" type="radio" name="bath" value="1"/>
+                <label for="bath1"><span>1</span></label>
+                <input id="bath2" type="radio" name="bath" value="2"/>
+                <label for="bath2"> <span>2</span></label>
+                <input id="bath3" type="radio" name="bath" value="3"/>
+                <label for="bath3"> <span>3</span></label>
+                <input id="bath4" type="radio" name="bath" value="4"/>
+                <label for="bath4"> <span>4</span></label>
+                <input id="bath5" type="radio" name="bath" value="5"/>
+                <label for="bath5"> <span>5</span></label>
+              </div>
+      
+              <div class="col-half">
+                <h4>Location</h4>
+                <div class="input-group">
+      
+                  <select>
+                    <option value="" disabled="disabled" selected="selected">Choose a Location</option>
+                    <option>Electronic City</option>
+                    <option>Rajaji Nagar</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            
+            <center>
+            <button class="button">
+        <span class="button__text">
+          <span>E</span>s<span>t</span>i</span>m<span>a</span>t<span>e</span> <span>P</span>r<span>i</span><span>c</span>e<span>!</span>
+        </span>
+        <svg class="button__svg" role="presentational" viewBox="0 0 600 600">
+          <defs>
+            <clipPath id="myClip">
+              <rect x="0" y="0" width="100%" height="50%" />
+            </clipPath>
+          </defs>
+          <g clip-path="url(#myClip)">
+            <g id="money">
+              <path d="M441.9,116.54h-162c-4.66,0-8.49,4.34-8.62,9.83l.85,278.17,178.37,2V126.37C450.38,120.89,446.56,116.52,441.9,116.54Z" fill="#699e64" stroke="#323c44" stroke-miterlimit="10" stroke-width="14" />
+              <path d="M424.73,165.49c-10-2.53-17.38-12-17.68-24H316.44c-.09,11.58-7,21.53-16.62,23.94-3.24.92-5.54,4.29-5.62,8.21V376.54H430.1V173.71C430.15,169.83,427.93,166.43,424.73,165.49Z" fill="#699e64" stroke="#323c44" stroke-miterlimit="10" stroke-width="14" />
+            </g>
+            <g id="creditcard">
+              <path d="M372.12,181.59H210.9c-4.64,0-8.45,4.34-8.58,9.83l.85,278.17,177.49,2V191.42C380.55,185.94,376.75,181.57,372.12,181.59Z" fill="#a76fe2" stroke="#323c44" stroke-miterlimit="10" stroke-width="14" />
+              <path d="M347.55,261.85H332.22c-3.73,0-6.76-3.58-6.76-8v-35.2c0-4.42,3-8,6.76-8h15.33c3.73,0,6.76,3.58,6.76,8v35.2C354.31,258.27,351.28,261.85,347.55,261.85Z" fill="#ffdc67" />
+              <path d="M249.73,183.76h28.85v274.8H249.73Z" fill="#323c44" />
+            </g>
+          </g>
+          <g id="wallet">
+            <path d="M478,288.23h-337A28.93,28.93,0,0,0,112,317.14V546.2a29,29,0,0,0,28.94,28.95H478a29,29,0,0,0,28.95-28.94h0v-229A29,29,0,0,0,478,288.23Z" fill="#a4bdc1" stroke="#323c44" stroke-miterlimit="10" stroke-width="14" />
+            <path d="M512.83,382.71H416.71a28.93,28.93,0,0,0-28.95,28.94h0V467.8a29,29,0,0,0,28.95,28.95h96.12a19.31,19.31,0,0,0,19.3-19.3V402a19.3,19.3,0,0,0-19.3-19.3Z" fill="#a4bdc1" stroke="#323c44" stroke-miterlimit="10" stroke-width="14" />
+            <path d="M451.46,435.79v7.88a14.48,14.48,0,1,1-29,0v-7.9a14.48,14.48,0,0,1,29,0Z" fill="#a4bdc1" stroke="#323c44" stroke-miterlimit="10" stroke-width="14" />
+            <path d="M147.87,541.93V320.84c-.05-13.2,8.25-21.51,21.62-24.27a42.71,42.71,0,0,1,7.14-1.32l-29.36-.63a67.77,67.77,0,0,0-9.13.45c-13.37,2.75-20.32,12.57-20.27,25.77l.38,221.24c-1.57,15.44,8.15,27.08,25.34,26.1l33-.19c-15.9,0-28.78-10.58-28.76-25.93Z" fill="#7b8f91" />
+            <path d="M148.16,343.22a6,6,0,0,0-6,6v92a6,6,0,0,0,12,0v-92A6,6,0,0,0,148.16,343.22Z" fill="#323c44" />
+          </g>
+      
+        </svg>
+      </button>
+      
+      </center>
+      
+        <div id="uiEstimatedPrice" class="result">	<h2></h2> </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+        <script src="https://rxo.me/js/scripts.js"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+    <script>
+        const card = document.querySelector('.card'),
+          input = document.querySelector('.input'),
+          line2 = document.querySelector('.line2');
+    document.querySelector('.form').addEventListener('submit', function(e) {
+      input.blur();
+      card.classList.add('saving');
+      e.preventDefault();
+    });
+    line2.addEventListener('animationend', function(e) {
+      setTimeout(() => {
+        card.classList.add('done');
+      }, 1000);
+    });
+    
+        </script>
 </html>
