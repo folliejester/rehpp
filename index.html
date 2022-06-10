@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         
         <title>REHPP</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="icon" href="https://i.imgur.com/xOAH2oy.png" type="image/x-icon">
         <meta property="og:title" content="REHPP">
         <meta property="og:type" content="Website" />
@@ -204,12 +205,16 @@ select option {
   border-radius: 4.2px;
   box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
 }
-
-
-
-
-
-        
+.result{
+		background: #dcd686;
+		width: 100%;
+		border: 0;
+		margin: 25px 0 10px;
+		box-sizing: border-box;
+		font-size: 15px;
+		height: 35px;
+		text-align: center;
+}        
           /* only animate if the device supports hover */
 @media (hover: hover) {
   #creditcard {
@@ -455,40 +460,40 @@ select option {
       
               <h4>BHK</h4>
               <div class="input-group">
-                <input id="bhk1" type="radio" name="bhk" value="1"/>
-                <label for="bhk1"><span>1</span></label>
-                <input id="bhk2" type="radio" name="bhk" value="2"/>
-                <label for="bhk2"> <span>2</span></label>
-                <input id="bhk3" type="radio" name="bhk" value="3"/>
-                <label for="bhk3"> <span>3</span></label>
-                <input id="bhk4" type="radio" name="bhk" value="4"/>
-                <label for="bhk4"> <span>4</span></label>
-                <input id="bhk5" type="radio" name="bhk" value="5"/>
-                <label for="bhk5"> <span>5</span></label>
+                <input id="radio-bhk-1" type="radio" name="uiBHK" value="1"/>
+                <label for="radio-bhk-1"><span>1</span></label>
+                <input id="radio-bhk-2" type="radio" name="uiBHK" value="2"/>
+                <label for="radio-bhk-2"> <span>2</span></label>
+                <input id="radio-bhk-3" type="radio" name="uiBHK" value="3"/>
+                <label for="radio-bhk-3"> <span>3</span></label>
+                <input id="radio-bhk-4" type="radio" name="uiBHK" value="4"/>
+                <label for="radio-bhk-4"> <span>4</span></label>
+                <input id="radio-bhk-5" type="radio" name="uiBHK" value="5"/>
+                <label for="radio-bhk-5"> <span>5</span></label>
               </div>
       
               <h4>Bath</h4>
               <div class="input-group">
-                <input id="bath1" type="radio" name="bath" value="1"/>
-                <label for="bath1"><span>1</span></label>
-                <input id="bath2" type="radio" name="bath" value="2"/>
-                <label for="bath2"> <span>2</span></label>
-                <input id="bath3" type="radio" name="bath" value="3"/>
-                <label for="bath3"> <span>3</span></label>
-                <input id="bath4" type="radio" name="bath" value="4"/>
-                <label for="bath4"> <span>4</span></label>
-                <input id="bath5" type="radio" name="bath" value="5"/>
-                <label for="bath5"> <span>5</span></label>
+                <input id="radio-bath-1" type="radio" name="uiBathrooms" value="1"/>
+                <label for="radio-bath-1"><span>1</span></label>
+                <input id="radio-bath-2" type="radio" name="uiBathrooms" value="2"/>
+                <label for="radio-bath-2"> <span>2</span></label>
+                <input id="radio-bath-3" type="radio" name="uiBathrooms" value="3"/>
+                <label for="radio-bath-3"> <span>3</span></label>
+                <input id="radio-bath-4" type="radio" name="uiBathrooms" value="4"/>
+                <label for="radio-bath-4"> <span>4</span></label>
+                <input id="radio-bath-5" type="radio" name="uiBathrooms" value="5"/>
+                <label for="radio-bath-5"> <span>5</span></label>
               </div>
       
               <div class="col-half">
                 <h4>Location</h4>
                 <div class="input-group">
       
-                  <select>
+                  <select class="location" name="" id="uiLocations">
                     <option value="" disabled="disabled" selected="selected">Choose a Location</option>
                     <option>Electronic City</option>
-                    <option>Rajaji Nagar</option>
+                        <option>Rajaji Nagar</option>
                   </select>
                 </div>
               </div>
@@ -551,7 +556,7 @@ select option {
         const card = document.querySelector('.card'),
           input = document.querySelector('.input'),
           line2 = document.querySelector('.line2');
-    document.querySelector('.form').addEventListener('submit', function(e) {
+    document.querySelector('.form').addEventListener('button', function(e) {
       input.blur();
       card.classList.add('saving');
       e.preventDefault();
@@ -561,6 +566,74 @@ select option {
         card.classList.add('done');
       }, 1000);
     });
+
+
+
+
+    function getBathValue() {
+  console.log("get bath value");
+  var uiBathrooms = document.getElementsByName("uiBathrooms");
+  for(var i in uiBathrooms) {
+    if(uiBathrooms[i].checked) {
+        return parseInt(i)+1;
+    }
+  }
+  return -1; // Invalid Value
+}
+
+function getBHKValue() {
+  console.log("get bhkvalue");
+  var uiBHK = document.getElementsByName("uiBHK");
+  for(var i in uiBHK) {
+    if(uiBHK[i].checked) {
+        return parseInt(i)+1;
+    }
+  }
+  return -1; // Invalid Value
+}
+
+function onClickedEstimatePrice() {
+  console.log("Estimate price button clicked");
+  var sqft = 1100;
+  var bhk = getBHKValue();
+  var bathrooms = getBathValue();
+  var location = document.getElementById("uiLocations");
+  var estPrice = document.getElementById("uiEstimatedPrice");
+
+   var url = "http://192.168.0.101:5000/predict_home_price"; //Use this if you are NOT using nginx which is first 7 tutorials
+  //var url = "/api/predict_home_price"; // Use this if  you are using nginx. i.e tutorial 8 and onwards
+
+  $.post(url, {
+      total_sqft: parseFloat(sqft.value),
+      bhk: bhk,
+      bath: bathrooms,
+      location: location.value
+  },function(data, status) {
+      console.log(data.estimated_price);
+      estPrice.innerHTML = "<h2>" + data.estimated_price.toString() + " Lakhs</h2>";
+      console.log(status);
+  });
+}
+
+function onPageLoad() {
+  console.log( "document loaded" );
+  var url = "http://192.168.0.101:5000/get_location_names"; // Use this if you are NOT using nginx which is first 7 tutorials
+  //var url = "/api/get_location_names"; // Use this if  you are using nginx. i.e tutorial 8 and onwards
+  $.get(url,function(data, status) {
+      console.log("got response for get_location_names request");
+      if(data) {
+          var locations = data.locations;
+          var uiLocations = document.getElementById("uiLocations");
+          $('#uiLocations').empty();
+          for(var i in locations) {
+              var opt = new Option(locations[i]);
+              $('#uiLocations').append(opt);
+          }
+      }
+  });
+}
+
+window.onload = onPageLoad;
     
         </script>
 </html>
